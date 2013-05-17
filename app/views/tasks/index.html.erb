@@ -1,0 +1,38 @@
+<%- model_class = Task -%>
+<% if @tasks.empty? %>
+       <h3>U have'nt created any task</h3>
+     <% else %> 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th><%= model_class.human_attribute_name(:Task) %></th>
+      <th><%= model_class.human_attribute_name(:assign_to) %></th>
+      
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+       
+        <td><%= task.name %></td>
+        <td><%= task.assign_to %></td>
+        
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_project_task_path(@project , task), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      project_task_path(@project , task),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %><% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.create task")),
+            new_project_task_path(@project),
+            :class => 'btn btn-primary' %>
