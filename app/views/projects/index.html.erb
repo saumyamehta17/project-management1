@@ -2,6 +2,20 @@
 <div class="page-header">
   
 </div>
+   <% if params[:invite_btn] %>
+     <div id='preview'>
+       <h4>Invitation has sent to <%= @email %></h4>
+       </div>
+     <% end %>
+<div>
+    <%= form_tag projects_path , :method => 'get' do %>
+      <p>
+       <%= text_field_tag :invite   %>
+       <%= submit_tag 'invite' , :name => 'invite_btn' %> 
+     </p>
+    <% end %>
+    
+  </div>
 <% if @projects.empty? %>
        <h3>U have'nt created any project</h3>
      <% else %> 
@@ -21,11 +35,11 @@
     <% @projects.each do |project| %>
       <tr>
         
-        <td><%= link_to project.name , project_path(project) %></td>
+        <td><strong><%= link_to project.name , project_path(project) %></strong></td>
         
         <td>
           
-          
+          <%= link_to 'Tasks',project_tasks_path(project), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_project_path(project), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -39,6 +53,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.Create Project', :default => t("helpers.links.Create Project")),
+<%= link_to 'Add Project',
             new_project_path,
             :class => 'btn btn-primary' %>

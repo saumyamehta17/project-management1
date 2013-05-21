@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517162343) do
+ActiveRecord::Schema.define(:version => 20130518073558) do
 
   create_table "profiles", :force => true do |t|
     t.string   "firstname"
@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(:version => 20130517162343) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
-    t.string   "assign_to"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "assigned_to_id"
   end
 
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"

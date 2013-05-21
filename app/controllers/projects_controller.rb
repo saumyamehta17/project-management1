@@ -2,8 +2,13 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.where(:user_id => current_user.id)
-
+    @email = params[:invite]
+    if params[:invite_btn]
+      
+       UserMailer.registration_confirmation(@email).deliver
+     end
+      @projects = Project.where(:user_id => current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
