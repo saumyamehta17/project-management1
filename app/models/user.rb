@@ -11,8 +11,11 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :projects
+  has_many :memberships
+  has_many :workspaces , :through => :memberships
 
   after_create :profile_intialize
+  
 
   def profile_intialize
     create_profile

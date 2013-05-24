@@ -1,19 +1,19 @@
 <%- model_class = Project -%>
 <div class="page-header">
   
-</div>
-   <% if params[:invite_btn] %>
+<!-- </div>
+   <%# if params[:invite_btn] %>
      <div id='preview'>
        <h4>Invitation has sent to <%= @email %></h4>
        </div>
-     <% end %>
+     <%# end %>
 <div>
-    <%= form_tag projects_path , :method => 'get' do %>
+    <%#= form_tag projects_path , :method => 'get' do %>
       <p>
-       <%= text_field_tag :invite   %>
-       <%= submit_tag 'invite' , :name => 'invite_btn' %> 
+       <%#= text_field_tag :invite   %>
+       <%#= submit_tag 'invite' , :name => 'invite_btn' %> 
      </p>
-    <% end %>
+    <%# end %> -->
     
   </div>
 <% if @projects.empty? %>

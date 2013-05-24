@@ -1,0 +1,18 @@
+<%- model_class = Membership -%>
+<div class="page-header">
+  
+</div>
+<div>
+    <%= form_tag membership_index_path , :method => 'get' do %>
+     
+    
+
+    <div class="control-group">
+   
+    <div class="controls">
+      <%= collection_select(:task, :invite_to_id, User.all, :id, :email, :prompt => true)%>
+      <%= submit_tag 'invite' , :name => 'invite_btn' %> 
+      <% debugger %>
+      
+    </div>
+  </div><% end %>

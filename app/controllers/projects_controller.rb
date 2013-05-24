@@ -2,11 +2,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @email = params[:invite]
-    if params[:invite_btn]
+    # @email = params[:invite]
+    # if params[:invite_btn]
       
-       UserMailer.registration_confirmation(@email).deliver
-     end
+    #    UserMailer.registration_confirmation(@email).deliver
+    #  end
       @projects = Project.where(:user_id => current_user.id)
     
     respond_to do |format|
