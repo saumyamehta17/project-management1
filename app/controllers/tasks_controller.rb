@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     
     @tasks = Task.all
-    
+    @workspace = Workspace.find(params[:workspace_id])
     @project = Project.find_by_id(params[:project_id])
     
     respond_to do |format|
@@ -19,6 +19,7 @@ class TasksController < ApplicationController
     @assigned_to = "No one is selected"
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
+    @workspace = Workspace.find(params[:workspace_id])
     # check_value = @task.assigned_to.username
      
      if @task.assigned_to.present?
@@ -38,6 +39,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @project = Project.find_by_id(params[:project_id])
+    @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @task }
@@ -48,6 +50,7 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
+    @workspace = Workspace.find(params[:workspace_id])
   end
 
   # POST /tasks
@@ -55,10 +58,11 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @project = Project.find_by_id(params[:project_id])
+    @workspace = Workspace.find(params[:workspace_id])
     @task.project = @project
     respond_to do |format|
       if @task.save
-        format.html { redirect_to project_task_path(@project,@task), notice: 'Task was successfully created.' }
+        format.html { redirect_to workspace_project_task_path(@workspace,@project,@task), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -72,9 +76,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
+    @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to project_task_path(@project,@task), notice: 'Task was successfully updated.' }
+        format.html { redirect_to workspace_project_task_path(@workspace,@project,@task), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -89,9 +94,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
      @task.destroy
     @project = Project.find_by_id(params[:project_id])
+    @workspace = Workspace.find(params[:workspace_id])
     
     respond_to do |format|
-      format.html { redirect_to project_tasks_path(@project) }
+      format.html { redirect_to workspace_project_tasks_path(@workspace,@project) }
       format.json { head :no_content }
     end
   end

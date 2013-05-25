@@ -2,18 +2,23 @@ class WorkspacesController < ApplicationController
   # GET /workspaces
   # GET /workspaces.json
   def index
-    @workspaces = Workspace.all
-
-    @email = params[:invite]
-    if params[:invite_btn]
-      UserMailer.registration_confirmation(@email).deliver
-     end
+    
+    
+    @mem = Membership.find_by_owner_id(current_user.id)
+    
+    if !@mem.nil?
+    @workspaces = Workspace.where(:id => @mem.workspace_id)
+  else
+     @workspaces = []
+   end
     
 
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @workspaces }
     end
+
   end
 
   # GET /workspaces/1
@@ -51,7 +56,7 @@ class WorkspacesController < ApplicationController
     
     respond_to do |format|
       if @workspace.save
-        @workspace.memberships.create(:user_id => current_user.id)
+        @workspace.memberships.create(:user_id => current_user.id , :owner_id => current_user.id)
         format.html { redirect_to @workspace, notice: 'Workspace was successfully created.' }
         format.json { render json: @workspace, status: :created, location: @workspace }
       else

@@ -1,5 +1,5 @@
 class Membership < ActiveRecord::Base
-  attr_accessible :created_at, :user_id, :workspace_id
+  attr_accessible :created_at, :user_id, :workspace_id, :owner_id
 
   with_options :presence => true do |valid|
   valid.validates :user_id 

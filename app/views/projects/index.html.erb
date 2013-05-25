@@ -1,21 +1,7 @@
 <%- model_class = Project -%>
 <div class="page-header">
-  
-<!-- </div>
-   <%# if params[:invite_btn] %>
-     <div id='preview'>
-       <h4>Invitation has sent to <%= @email %></h4>
-       </div>
-     <%# end %>
-<div>
-    <%#= form_tag projects_path , :method => 'get' do %>
-      <p>
-       <%#= text_field_tag :invite   %>
-       <%#= submit_tag 'invite' , :name => 'invite_btn' %> 
-     </p>
-    <%# end %> -->
-    
-  </div>
+   <h3>You are in Workspace "<%= @workspace.name %>"" </h3>
+</div>
 <% if @projects.empty? %>
        <h3>U have'nt created any project</h3>
      <% else %> 
@@ -35,15 +21,15 @@
     <% @projects.each do |project| %>
       <tr>
         
-        <td><strong><%= link_to project.name , project_path(project) %></strong></td>
+        <td><strong><%= link_to project.name , workspace_project_path(@workspace , project) %></strong></td>
         
         <td>
           
-          <%= link_to 'Tasks',project_tasks_path(project), :class => 'btn btn-mini' %>
+          <%#= link_to 'Tasks',project_tasks_path(project), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_project_path(project), :class => 'btn btn-mini' %>
+                       edit_workspace_project_path(@workspace , project), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      project_path(project),
+                      workspace_project_path(@workspace , project),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -54,5 +40,5 @@
 </table>
 
 <%= link_to 'Add Project',
-            new_project_path,
+             new_workspace_project_path(@workspace),
             :class => 'btn btn-primary' %>

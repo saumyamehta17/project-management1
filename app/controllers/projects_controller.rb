@@ -1,12 +1,9 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
-  def index
-    # @email = params[:invite]
-    # if params[:invite_btn]
-      
-    #    UserMailer.registration_confirmation(@email).deliver
-    #  end
+def index
+     
+      @workspace = Workspace.find(params[:workspace_id])
       @projects = Project.where(:user_id => current_user.id)
     
     respond_to do |format|
@@ -19,7 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-
+    @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -30,7 +27,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-
+    @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -40,6 +37,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    @workspace = Workspace.find(params[:workspace_id])
   end
 
   # POST /projects
@@ -47,9 +45,11 @@ class ProjectsController < ApplicationController
   def create
      @project = Project.new(params[:project])
      @project.user_id = current_user.id
+     @workspace = Workspace.find(params[:workspace_id])
+     
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to workspace_project_path(@workspace , @project), notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
-
+    @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -78,10 +78,12 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
+    
+    @workspace = Workspace.find(params[:workspace_id])
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+    format.html { redirect_to workspace_projects_path(@workspace)}
       format.json { head :no_content }
     end
   end

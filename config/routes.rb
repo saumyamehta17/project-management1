@@ -2,17 +2,21 @@ Lighthouse::Application.routes.draw do
   
 
 
-  get "membership/index"
+  
 
-  resources :workspaces
+  resources :workspaces do
+    get "membership/index"
+    
+    resources :projects do
+    resources :tasks
+    end 
+  end
 
 
   resources :profiles
 
 
-  resources :projects do
-    resources :tasks
-  end 
+  
 
   devise_for :users
 

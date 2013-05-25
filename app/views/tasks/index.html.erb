@@ -17,14 +17,14 @@
     <% @tasks.each do |task| %>
       <tr>
        
-        <td><%= link_to task.name , project_task_path(@project,task) %></td>
+        <td><%= link_to task.name , workspace_project_task_path(@workspace,@project,task) %></td>
         
         
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_project_task_path(@project , task), :class => 'btn btn-mini' %>
+                      edit_workspace_project_path(@workspace,@project , task), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      project_task_path(@project , task),
+                      workspace_project_task_path(@workspace, @project , task),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -35,5 +35,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.create task")),
-            new_project_task_path(@project),
+            new_workspace_project_task_path(@workspace , @project),
             :class => 'btn btn-primary' %>

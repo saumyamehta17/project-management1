@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default from: "smehta1289@gmail.com"
+  default from: "mehtasweety89@gmail.com"
   @name = ""
-  def registration_confirmation(addrss,work)
+  def registration_confirmation(addrss)
     @name = addrss
-    mail(:to => addrss , :subject => 'registraion' )
+    mail(:to => addrss , :subject => 'registration' )
 
   end
 

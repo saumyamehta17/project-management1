@@ -3,6 +3,7 @@ class Workspace < ActiveRecord::Base
   # has_many :projects
   has_many :memberships
   has_many :users , :through => :memberships
+  has_many :projects
 
   # after_create :membership_intialize
   

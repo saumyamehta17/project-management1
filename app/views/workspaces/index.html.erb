@@ -6,29 +6,13 @@
        <h3>U have'nt created any Workspace yet.</h3>
 <% else %>
 
-</div>
-   <% if params[:invite_btn] %>
-     <div id='preview'>
-       <h4>Invitation has sent to <%= @email %></h4>
-       </div>
-     <% end %>
-<div>
-<div>
-    <%= form_tag workspaces_path , :method => 'get' do %>
-      <p>
-       <%= text_field_tag :invite   %>
-       <%= submit_tag 'invite' , :name => 'invite_btn' %> 
-     </p>
-    <% end %>
-    
-  </div>
 
 <table class="table table-striped">
   <thead>
     <tr>
       
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:Workspace) %></th>
+      
       
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -37,8 +21,8 @@
     <% @workspaces.each do |workspace| %>
       <tr>
         
-        <td><%= link_to workspace.name , workspace_path(workspace) %></td>
-        <td><%= workspace.description %></td>
+        <td><strong><%= link_to workspace.name , workspace_path(workspace) %></strong></td>
+        
         
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -57,4 +41,4 @@
 <%= link_to 'New Workspace',
             new_workspace_path,
             :class => 'btn btn-primary' %>
-<%= link_to 'invite people' ,  membership_index_path , :class => 'btn btn-primary'%>
+

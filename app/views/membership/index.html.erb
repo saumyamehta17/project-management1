@@ -1,18 +1,24 @@
 <%- model_class = Membership -%>
 <div class="page-header">
-  
+   <h3>Invite People for Workspace <strong>"<%=@workspace.name  %>"</strong> </h3>
 </div>
 <div>
-    <%= form_tag membership_index_path , :method => 'get' do %>
+    <%= form_tag workspace_membership_index_path(@workspace) , :method => 'get' do %>
      
-    
+    </div>
+   <% if params[:invite_btn] %>
+     <div id='preview'>
+       <h4>Invitation has sent to <%= @email %></h4>
+       </div>
+     <% end %>
+    <div>
 
     <div class="control-group">
    
     <div class="controls">
-      <%= collection_select(:task, :invite_to_id, User.all, :id, :email, :prompt => true)%>
+      <%= collection_select(:membership, :invite_to_id, User.all, :id, :email, :prompt => true)%>
       <%= submit_tag 'invite' , :name => 'invite_btn' %> 
-      <% debugger %>
+      
       
     </div>
   </div><% end %>

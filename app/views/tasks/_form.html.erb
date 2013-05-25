@@ -1,5 +1,5 @@
 
-<%= form_for [@project , @task] , :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [@workspace, @project , @task] , :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :task, :class => 'control-label' %>
     <div class="controls">
@@ -10,7 +10,7 @@
     <%= f.label :assigned_to_id, 'Assigned to', :class => 'control-label' %>
     <div class="controls">
       <%= collection_select(:task, :assigned_to_id, User.all, :id, :username, :prompt => true)%>
-      <%#= f.text_field :assigned_to_id, :class => 'text_field' %>
+      
     </div>
   </div>
   
@@ -18,7 +18,7 @@
    <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                project_tasks_path(@project), :class => 'btn' %>
+                workspace_project_tasks_path(@workspace,@project), :class => 'btn' %>
   </div> 
 <% end %>
 
