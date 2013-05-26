@@ -1,17 +1,15 @@
 class UserMailer < ActionMailer::Base
-  default from: "mehtasweety89@gmail.com"
-  @name = ""
-  def registration_confirmation(addrss)
+  default from: "mehtamehta1789@gmail.com"
+  
+  def registration_confirmation(addrss,work)
     @name = addrss
+    @workspace = work.name
     mail(:to => addrss , :subject => 'registration' )
-
   end
 
  
 
-  def name
-    @name = @name.split('@')
-  end
+  
 
 
 end

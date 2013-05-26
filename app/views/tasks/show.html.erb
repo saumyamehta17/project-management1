@@ -1,8 +1,11 @@
 <%- model_class = Task -%>
 
 <dl class="dl-horizontal">
+  <div>
   <dt><strong>Task: </strong></dt>
-  <strong><dd><%= @task.name %></dd></strong>
+  <strong><dd><%= @task.name %></dd></strong></div>
+  <dt><strong>Description: </strong></dt>
+  <strong><dd><%= @task.description %></dd></strong>
   <dt><strong>Assigned to:</strong></dt>
   <dd><%= @assigned_to %></dd>
   

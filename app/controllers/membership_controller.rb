@@ -6,8 +6,7 @@ class MembershipController < ApplicationController
   if params[:invite_btn]
       @email = User.find(params[:membership][:invite_to_id]).email
       @id = User.find(params[:membership][:invite_to_id]).id
-      debugger
-      UserMailer.registration_confirmation(@email).deliver
+      UserMailer.registration_confirmation(@email,@workspace).deliver
       @workspace.memberships.create(:user_id => current_user.id , :owner_id => @id)
    end
 

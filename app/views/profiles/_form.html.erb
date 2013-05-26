@@ -14,43 +14,23 @@
   <div class="control-group">
     <%= f.label :phoneno, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :phoneno, :class => 'number_field' %>
+      <%= f.text_field :phoneno  %>
     </div>
   </div>
+  
+  
   <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
+    <%= f.label :Upload_Photo, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :user_id, :class => 'number_field' %>
+      <%= f.file_field :photo %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :photo_file_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :photo_file_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :photo_content_type, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :photo_content_type, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :photo_file_size, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :photo_file_size, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :photo_updated_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :photo_updated_at, :class => 'datetime_select' %>
-    </div>
-  </div>
+  
+  
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                profiles_path, :class => 'btn' %>
+                profile_path, :class => 'btn' %>
   </div>
 <% end %>

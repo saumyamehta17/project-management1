@@ -13,8 +13,8 @@ Lighthouse::Application.routes.draw do
   end
 
 
-  resources :profiles
-
+  resource :profile
+  match "profile" => "profile#show"
 
   
 

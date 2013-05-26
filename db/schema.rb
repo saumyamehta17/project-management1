@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525151510) do
+ActiveRecord::Schema.define(:version => 20130526152058) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130525151510) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "email"
+    t.text     "desc"
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
@@ -54,6 +55,9 @@ ActiveRecord::Schema.define(:version => 20130525151510) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "assigned_to_id"
+    t.string   "description"
+    t.string   "progress"
+    t.string   "status"
   end
 
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"

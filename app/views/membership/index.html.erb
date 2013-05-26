@@ -18,6 +18,8 @@
     <div class="controls">
       <%= collection_select(:membership, :invite_to_id, User.all, :id, :email, :prompt => true)%>
       <%= submit_tag 'invite' , :name => 'invite_btn' %> 
+    </div><div>
+     <%= link_to 'back' , workspaces_path , :class => 'btn btn-primary' %> 
       
       
     </div>

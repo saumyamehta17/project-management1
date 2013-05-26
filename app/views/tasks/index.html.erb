@@ -2,7 +2,7 @@
 
 
 <% if @tasks.empty? %>
-       <h3>U have'nt created any task</h3>
+       <h3>No tasks in <%= @project.name %></h3>
      <% else %> 
 <table class="table table-striped">
   <thead>
@@ -17,13 +17,13 @@
     <% @tasks.each do |task| %>
       <tr>
        
-        <td><%= link_to task.name , workspace_project_task_path(@workspace,@project,task) %></td>
+        <td><h4><%= link_to task.name , workspace_project_task_path(@workspace,@project,task) %></h4></td>
         
         
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_workspace_project_path(@workspace,@project , task), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      edit_workspace_project_task_path(@workspace,@project ,task), :class => 'btn btn-mini' %>
+          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       workspace_project_task_path(@workspace, @project , task),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

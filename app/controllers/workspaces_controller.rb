@@ -46,6 +46,8 @@ class WorkspacesController < ApplicationController
   # GET /workspaces/1/edit
   def edit
     @workspace = Workspace.find(params[:id])
+    @status = "edit"
+    
   end
 
   # POST /workspaces
