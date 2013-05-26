@@ -8,9 +8,9 @@ class WorkspacesController < ApplicationController
     
     if !@mem.nil?
     @workspaces = Workspace.where(:id => @mem.workspace_id)
-  else
+    else
      @workspaces = []
-   end
+    end
     
 
     

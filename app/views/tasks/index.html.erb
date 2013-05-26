@@ -23,6 +23,8 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_workspace_project_task_path(@workspace,@project ,task), :class => 'btn btn-mini' %>
+                    
+
           <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       workspace_project_task_path(@workspace, @project , task),
                       :method => :delete,
@@ -37,3 +39,5 @@
 <%= link_to t('.new', :default => t("helpers.links.create task")),
             new_workspace_project_task_path(@workspace , @project),
             :class => 'btn btn-primary' %>
+            <%= link_to t('.back', :default => t("helpers.links.back")),
+                      workspace_project_path(@workspace,@project), :class => 'btn btn-primary ' %>  

@@ -15,9 +15,13 @@ class User < ActiveRecord::Base
   has_many :workspaces , :through => :memberships
 
   after_create :profile_intialize
+  after_create :workspace_intialize
   
 
   def profile_intialize
     create_profile
+  end
+  def workspace_intialize
+    workspaces.create(:name => 'Personal')
   end
 end
