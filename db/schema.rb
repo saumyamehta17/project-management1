@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20130526152058) do
   create_table "profiles", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "phoneno"
+    t.string   "phoneno"
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(:version => 20130526152058) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.text     "description"
+    t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "email"
-    t.text     "desc"
+    t.text     "desc",        :limit => 255
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"

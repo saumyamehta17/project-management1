@@ -4,6 +4,7 @@ class Membership < ActiveRecord::Base
   with_options :presence => true do |valid|
   valid.validates :user_id 
   valid.validates :workspace_id 
+  valid.validates :owner_id
   end
 
   belongs_to :user
