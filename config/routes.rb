@@ -14,7 +14,8 @@ Lighthouse::Application.routes.draw do
 
 
   resource :profile
-  match "profile" => "profile#show"
+
+  # match "profile" => "profile#update"
 
   
 

@@ -22,29 +22,26 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :progress, :class => 'control-label' %>  
+    <%= f.label :status , :class => 'control-label'  %>
     <div class="controls">
-    <select class="select">
-    <option>Select</option>
-    <% 10.times  do |n| %>
-    <option><%= (n+1)*10 %></option>
-    <% end %>
-  </select>
-</div></div></br>
+    <%= collection_select(:task , :status_id , Status.all , :id,:name,:prompt => 'select status') %>
+  </div></div>
 
-<div class="control-group">
-    <%= f.label :status, :class => 'control-label' %>  
+  <div class="control-group">
+    <%= f.label :progress , :class => 'control-label'  %>
     <div class="controls">
-     <select class="select">
-    <option>Select</option>
+    <%= collection_select(:task , :progress_id , Progress.all , :id,:name,:prompt => 'select progress') %>
+  </div></div>
+
+  <div class="control-group">
+    <%= f.label :Attachment , :class => 'control-label'  %>
+    <div class="controls">
+     <%= f.file_field @task.attachments %>  
     
-    <option>New</option>
-    <option>Ready</option>
-    <option>Done</option>
-    <option>Hold</option>
-    
-  </select>
-</div></div>
+  </div></div>
+
+
+  
   
 
    <div class="form-actions">

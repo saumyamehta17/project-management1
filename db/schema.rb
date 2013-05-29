@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130526152058) do
+ActiveRecord::Schema.define(:version => 20130529140402) do
+
+  create_table "attachments", :force => true do |t|
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.integer  "task_id"
+  end
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -19,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20130526152058) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "invite_to_id"
-    t.integer  "owner_id"
+    t.string   "email"
   end
 
   create_table "profiles", :force => true do |t|
@@ -37,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20130526152058) do
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
+  create_table "progresses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -49,6 +65,12 @@ ActiveRecord::Schema.define(:version => 20130526152058) do
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
@@ -56,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20130526152058) do
     t.datetime "updated_at",     :null => false
     t.integer  "assigned_to_id"
     t.string   "description"
-    t.string   "progress"
-    t.string   "status"
+    t.integer  "progress_id"
+    t.integer  "status_id"
   end
 
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"

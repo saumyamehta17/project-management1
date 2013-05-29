@@ -21,7 +21,10 @@ class User < ActiveRecord::Base
   def profile_intialize
     create_profile
   end
+
   def workspace_intialize
-    workspaces.create(:name => 'Personal')
+    default_workspace = workspaces.create(:name => 'Personal')
+    memberships.create(:workspace_id => default_workspace)
   end
+  
 end

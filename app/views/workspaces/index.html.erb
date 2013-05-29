@@ -3,9 +3,7 @@
 <div class="page-header">
   
 </div>
-<%# if @workspaces.empty? %>
-       <!-- <h3>U have'nt created any Workspace yet.</h3> -->
-<%# else %>
+
 
 
 <table class="table table-striped">
@@ -13,21 +11,17 @@
     <tr>
       
       <th><%= model_class.human_attribute_name(:Workspace) %></th>
-      
-      
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
+<tbody>
+
     <% @workspaces.each do |workspace| %>
       <tr>
-        
-        <td><strong><h3><%= link_to workspace.name , workspace_path(workspace) %></h3></strong></td>
-        
-        
+        <td><h4><%= link_to workspace.name , workspace_path(workspace) %></h4></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_workspace_path(workspace), :class => 'btn btn-small' %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_workspace_path(workspace), :class => 'btn btn-mini' %><% end %>
           <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       workspace_path(workspace),
                       :method => :delete,
@@ -35,10 +29,10 @@
                       :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
-    <%# end %>
+    
   </tbody>
 </table>
-<% end %>
+<br />
 <%= link_to 'New Workspace',
             new_workspace_path,
             :class => 'btn btn-primary' %>

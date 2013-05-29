@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Status.create(:name => 'New')
+  Status.create(:name => 'Ready')
+  Status.create(:name => 'Hold')
+  Status.create(:name => 'Done')
+
+  
+  
+  10.times  do |n|
+    Progress.create(:name => "#{(n+1)*10}")
+  end 
+
