@@ -77,7 +77,6 @@ class TasksController < ApplicationController
   def update
 
     @task = Task.find(params[:id])
-    debugger
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
 

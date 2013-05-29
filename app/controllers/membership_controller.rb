@@ -4,7 +4,8 @@ class MembershipController < ApplicationController
   @mem = Membership.find_by_workspace_id(params[:workspace_id])  
   @workspace = Workspace.find(params[:workspace_id]) 
  
-  if params[:invite_btn]
+  # if params[:invite_btn]
+    debugger
       
       # @email = params[:Enter]
       
@@ -13,8 +14,8 @@ class MembershipController < ApplicationController
       UserMailer.registration_confirmation(@email,@workspace).deliver
       @workspace.memberships.create(:user_id => @id)
       # @w = @workspace.memberships.create(:email => @email)
-      # debugger
-   end
+      
+   # end
 
   
   
