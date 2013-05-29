@@ -2,10 +2,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    
-    @tasks = Task.all
     @workspace = Workspace.find(params[:workspace_id])
     @project = Project.find_by_id(params[:project_id])
+    @tasks = Task.where(:project_id => @project)
     
     respond_to do |format|
       format.html # index.html.erb
