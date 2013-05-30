@@ -57,6 +57,8 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
+    
+    debugger
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @task.project = @project
@@ -74,8 +76,9 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-
+    
     @task = Task.find(params[:id])
+
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
 

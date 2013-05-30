@@ -1,5 +1,5 @@
 
-<%= form_for [@workspace, @project , @task] , :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [@workspace, @project , @task] , :html => { :class => 'form-horizontal' , :multipart => true } do |f| %>
   <div class="control-group">
     <%= f.label :task, :class => 'control-label' %>
     <div class="controls">
@@ -36,7 +36,7 @@
   <div class="control-group">
     <%= f.label :Attachment , :class => 'control-label'  %>
     <div class="controls">
-     <%= f.file_field @task.attachments %>  
+     <%= f.file_field @task.attachments %>
     
   </div></div>
 

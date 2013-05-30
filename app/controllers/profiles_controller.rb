@@ -58,19 +58,31 @@ class ProfilesController < ApplicationController
   def update
 
     @profile = Profile.find_by_user_id(current_user.id)
-      
-    respond_to do |format|
+    # respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { head :no_content }
-       
+        redirect_to @profile, notice: 'Profile was successfully updated.'
+        # format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        # format.json { head :no_content }
+
       else
-        format.html { render action: "edit" }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        render action: "edit"
+        # format.html { render action: "edit" }
+        # format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
+  #   respond_to do |format|
+  #     if @profile.update_attributes(params[:profile])
+        
+  #       format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+  #       format.json { head :no_content }
+       
+  #     else
+  #       format.html { render action: "edit" }
+  #       format.json { render json: @profile.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /profiles/1
   # DELETE /profiles/1.json
