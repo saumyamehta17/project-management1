@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @profiles }
@@ -38,20 +38,27 @@ class ProfilesController < ApplicationController
 
   # POST /profiles
   # POST /profiles.json
-  def create
-    @profile = Profile.new(params[:profile])
-    @profile.user_id = current_user.id
-    respond_to do |format|
-      if @profile.save
-        format.html # show.html.erb
-        # format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render json: @profile, status: :created, location: @profile }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+
+  # Manoj
+  #
+  # commenting this becuse in our system we never use this action
+  # as we are creating profile by a callback of user
+  #
+
+  # def create
+  #   @profile = Profile.new(params[:profile])
+  #   @profile.user_id = current_user.id
+  #   # respond_to do |format|
+  #     if @profile.save
+  #       redirect_to @profile, notice: 'Profile was successfully created.'
+  #       # format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+  #       # format.json { render json: @profile, status: :created, location: @profile }
+  #     else
+  #       # format.html { render action: "new" }
+  #       # format.json { render json: @profile.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PUT /profiles/1
   # PUT /profiles/1.json
@@ -60,7 +67,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_user_id(current_user.id)
     # respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        redirect_to @profile, notice: 'Profile was successfully updated.'
+        redirect_to profile_path, notice: 'Profile was successfully updated.'
         # format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         # format.json { head :no_content }
 
@@ -73,10 +80,10 @@ class ProfilesController < ApplicationController
   end
   #   respond_to do |format|
   #     if @profile.update_attributes(params[:profile])
-        
+
   #       format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
   #       format.json { head :no_content }
-       
+
   #     else
   #       format.html { render action: "edit" }
   #       format.json { render json: @profile.errors, status: :unprocessable_entity }
