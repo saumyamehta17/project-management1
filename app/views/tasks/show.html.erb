@@ -12,8 +12,10 @@
   <dd><%= @task.status.name %></dd>
   <dt><strong>Progress:</strong></dt>
   <dd><%= @task.progress.name %></dd>
-  <dt><strong>Attachment:</strong></dt>
-  <dd><%= image_tag(@task.attachments.document.url(:small)) %></dd>
+  <dt><strong>Attachments:</strong></dt>
+  <% for doc in @task.attachments %>
+    <%= image_tag doc.document.url(:thumb) %>
+   <% end %> 
 
   
 </dl>

@@ -33,12 +33,19 @@
     <%= collection_select(:task , :progress_id , Progress.all , :id,:name,:prompt => 'select progress') %>
   </div></div>
 
-  <div class="control-group">
+ <!--  <div class="control-group">
     <%= f.label :Attachment , :class => 'control-label'  %>
     <div class="controls">
      <%= f.file_field @task.attachments %>
     
-  </div></div>
+  </div></div> -->
+  <div class="control-group">
+  <%= f.label :Attachment , :class => 'control-label'  %>
+  <%= fields_for :attachments do |t| %>
+   <div>
+     <%= t.file_field(:document) %>
+     </div>
+     <% end %></div>   
 
 
   

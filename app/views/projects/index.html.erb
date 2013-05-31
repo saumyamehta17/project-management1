@@ -1,6 +1,6 @@
 <%- model_class = Project -%>
 <div class="page-header">
-   <h3>You are in Workspace "<%= @workspace.name %>"" </h3>
+   <h3>Workspace "<%= @workspace.name %>" </h3>
 </div>
 <% if @projects.empty? %>
        <h3>Plz create Project</h3>
@@ -28,6 +28,8 @@
           <%#= link_to 'Tasks',project_tasks_path(project), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                        edit_workspace_project_path(@workspace , project), :class => 'btn btn-mini' %>
+                       
+
           <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       workspace_project_path(@workspace , project),
                       :method => :delete,
@@ -42,3 +44,6 @@
 <%= link_to 'Add Project',
              new_workspace_project_path(@workspace),
             :class => 'btn btn-primary' %>
+ <%= link_to 'Back' ,
+             workspace_path(@workspace),
+              :class => 'btn btn-primary' %>

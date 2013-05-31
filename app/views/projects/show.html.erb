@@ -1,13 +1,14 @@
 <%- model_class = Project -%>
 <div class="page-header">
   <div class="page-header">
-   <h3>You are in Workspace "<%= @workspace.name %> </h3>
+   <h3>Workspace "<%= @workspace.name %>" --   Project "<%= @project.name %>"</h3>
 </div>
 </div> 
 
 <dl class="dl-horizontal">
+  <div class="float-left">
   <dt><strong><%= model_class.human_attribute_name(:Project) %>:</strong></dt>
-  <dd><strong><%= @project.name %></strong></dd>
+  <dd><h4><%= @project.name %></h4></div><dd>   
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @project.description %></dd>
   

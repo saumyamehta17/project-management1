@@ -1,11 +1,13 @@
 class Task < ActiveRecord::Base
-  attr_accessible :assigned_to_id, :name ,:description, :status_id , :progress_id
+  attr_accessible :assigned_to_id, :name ,:description, :status_id , :progress_id, :attachments_attributes
   
   belongs_to :project
   belongs_to :assigned_to, class_name: 'User', foreign_key: 'assigned_to_id'
   belongs_to :status
   belongs_to :progress
   has_many :attachments
+
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
   
   with_options :presence => true do |task|
     task.validates :name  
@@ -17,15 +19,6 @@ class Task < ActiveRecord::Base
     task.validates :status_id
  end
 
- # before_save :create_new_attachments
+ 
 
- # def create_new_attachments
- #    @task.attachments.create(:document => @)
- # end
-
-
-
-
-
-     
 end
