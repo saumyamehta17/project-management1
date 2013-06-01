@@ -13,12 +13,12 @@
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
   </div>
-  
+
   <div class="control-group">
     <%= f.label :assigned_to_id, 'Assigned to', :class => 'control-label' %>
     <div class="controls">
       <%= collection_select(:task, :assigned_to_id, User.all, :id, :username, :prompt => true)%>
-      
+
     </div>
   </div>
   <div class="control-group">
@@ -34,28 +34,29 @@
   </div></div>
 
  <!--  <div class="control-group">
-    <%= f.label :Attachment , :class => 'control-label'  %>
+    <%#= f.label :Attachment , :class => 'control-label'  %>
     <div class="controls">
-     <%= f.file_field @task.attachments %>
-    
+     <%#= f.file_field @task.attachments %>
+
   </div></div> -->
   <div class="control-group">
-  <%= f.label :Attachment , :class => 'control-label'  %>
-  <%= fields_for :attachments do |t| %>
-   <div>
-     <%= t.file_field(:document) %>
-     </div>
-     <% end %></div>   
+  <%= f.label :attachment , :class => 'control-label'  %>
+    <%= f.fields_for :attachments do |t| %>
+       <div>
+         <%= t.file_field(:document) %>
+       </div>
+    <% end %>
+  </div>
 
 
-  
-  
+
+
 
    <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 workspace_project_tasks_path(@workspace,@project), :class => 'btn' %>
-  </div> 
+  </div>
 <% end %>
 
 

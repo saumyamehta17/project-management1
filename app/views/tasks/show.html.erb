@@ -9,15 +9,15 @@
   <dt><strong>Assigned to:</strong></dt>
   <dd><%= @assigned_to %></dd>
   <dt><strong>Status:</strong></dt>
-  <dd><%= @task.status.name %></dd>
+  <dd><%= @task.status.name unless @task.status.blank? %></dd>
   <dt><strong>Progress:</strong></dt>
-  <dd><%= @task.progress.name %></dd>
+  <dd><%= @task.progress.name unless @task.status.blank?%></dd>
   <dt><strong>Attachments:</strong></dt>
   <% for doc in @task.attachments %>
     <%= image_tag doc.document.url(:thumb) %>
-   <% end %> 
+   <% end %>
 
-  
+
 </dl>
 
 <div class="form-actions">

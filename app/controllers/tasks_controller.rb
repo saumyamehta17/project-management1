@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @workspace = Workspace.find(params[:workspace_id])
     @project = Project.find_by_id(params[:project_id])
     @tasks = Task.where(:project_id => @project)
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
@@ -19,13 +19,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-   
-     
+
+
      if @task.assigned_to.present?
        @assigned_to = @task.assigned_to.username
     end
-    
-   
+
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,6 +40,7 @@ class TasksController < ApplicationController
 
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
+    @task.attachments.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @task }
@@ -51,14 +52,14 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
+    @task.attachments.build
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-    
-    debugger
+
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @task.project = @project
@@ -76,7 +77,7 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    
+
     @task = Task.find(params[:id])
 
     @project = Project.find_by_id(params[:project_id])
@@ -100,7 +101,7 @@ class TasksController < ApplicationController
      @task.destroy
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-    
+
     respond_to do |format|
       format.html { redirect_to workspace_project_tasks_path(@workspace,@project) }
       format.json { head :no_content }
