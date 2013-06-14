@@ -1,10 +1,12 @@
 <%- model_class = Project -%>
+
 <div class="page-header">
    <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
      <div class="icon icon-edit"></div><% end %>
      <a href="#" rel="tooltip" title="description of workspace  <%= @workspace.description %>" ><%= @workspace.name %></a>
    </h3>
 </div>
+
 <% if @projects.empty? %>
        <h3>Plz create Project</h3>
      <% else %> 
@@ -13,10 +15,7 @@
     <tr>
       
       <th><%= model_class.human_attribute_name(:Projects) %></th>
-      
-      
-      
-      <!-- <th><%#=t '.actions', :default => t("helpers.actions") %></th> -->
+    
     </tr>
   </thead>
   <tbody>
@@ -47,6 +46,4 @@
 <%= link_to 'Add Project',
              new_workspace_project_path(@workspace),
             :class => 'btn btn-primary' %>
- <%= link_to 'Back' ,
-             workspaces_path,
-              :class => 'btn btn-primary' %>
+ <%= link_to 'Back' ,:back,:class => 'btn btn-primary' %>
