@@ -1,6 +1,9 @@
 <%- model_class = Project -%>
 <div class="page-header">
-   <h3>Workspace "<%= @workspace.name %>" </h3>
+   <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
+     <div class="icon icon-edit"></div><% end %>
+     <a href="#" rel="tooltip" title="description of workspace  <%= @workspace.description %>" ><%= @workspace.name %></a>
+   </h3>
 </div>
 <% if @projects.empty? %>
        <h3>Plz create Project</h3>
@@ -13,7 +16,7 @@
       
       
       
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <!-- <th><%#=t '.actions', :default => t("helpers.actions") %></th> -->
     </tr>
   </thead>
   <tbody>
@@ -21,12 +24,12 @@
     <% @projects.each do |project| %>
       <tr>
         
-        <td><strong><h3><%= link_to project.name , workspace_project_path(@workspace , project) %></h3></strong></td>
+        <td><strong><h3><%= link_to project.name , workspace_project_tasks_path(@workspace , project) %></h3></strong></td>
         
         <td>
           
           <%#= link_to 'Tasks',project_tasks_path(project), :class => 'btn btn-mini' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                        edit_workspace_project_path(@workspace , project), :class => 'btn btn-mini' %>
                        
 
@@ -45,5 +48,5 @@
              new_workspace_project_path(@workspace),
             :class => 'btn btn-primary' %>
  <%= link_to 'Back' ,
-             workspace_path(@workspace),
+             workspaces_path,
               :class => 'btn btn-primary' %>

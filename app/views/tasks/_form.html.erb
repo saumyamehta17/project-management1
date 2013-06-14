@@ -1,5 +1,5 @@
 
-<%= form_for [@workspace, @project , @task] , :html => { :class => 'form-horizontal' , :multipart => true } do |f| %>
+<%= nested_form_for [@workspace, @project , @task] , :html => { :class => 'form-horizontal' , :multipart => true } do |f| %>
   <div class="control-group">
     <%= f.label :task, :class => 'control-label' %>
     <div class="controls">
@@ -39,13 +39,19 @@
      <%#= f.file_field @task.attachments %>
 
   </div></div> -->
-  <div class="control-group">
+
+  <div class="control-group" >
   <%= f.label :attachment , :class => 'control-label'  %>
     <%= f.fields_for :attachments do |t| %>
-       <div>
-         <%= t.file_field(:document) %>
+       <div class="controls">
+         <%= t.file_field :document %>
+         <%= t.link_to_remove "Remove this attachment" %>
+         
        </div>
     <% end %>
+  </div>
+  <div >
+    <%= f.link_to_add "Add more attachments" , :attachments %>
   </div>
 
 
@@ -54,9 +60,9 @@
 
    <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                workspace_project_tasks_path(@workspace,@project), :class => 'btn' %>
+    <%= link_to "cancel",:back, :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
 
 

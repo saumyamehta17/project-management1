@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529140402) do
+ActiveRecord::Schema.define(:version => 20130614070305) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",            :null => false
@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(:version => 20130529140402) do
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "email"
-    t.text     "desc",        :limit => 255
+    t.text     "desc",         :limit => 255
+    t.integer  "workspace_id"
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"

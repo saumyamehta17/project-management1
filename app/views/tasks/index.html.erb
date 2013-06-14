@@ -36,8 +36,5 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.create task")),
-            new_workspace_project_task_path(@workspace , @project),
-            :class => 'btn btn-primary' %>
-            <%= link_to t('.back', :default => t("helpers.links.back")),
-                      workspace_project_path(@workspace,@project), :class => 'btn btn-primary ' %>  
+<%= link_to "Add Task",new_workspace_project_task_path(@workspace , @project),:class => 'btn btn-primary' %>
+<%= link_to "Back",:back, :class => 'btn btn-primary ' %>  

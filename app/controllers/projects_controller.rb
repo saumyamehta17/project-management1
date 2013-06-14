@@ -4,7 +4,9 @@ class ProjectsController < ApplicationController
 def index
      
       @workspace = Workspace.find(params[:workspace_id])
-      @projects = Project.where(:user_id => current_user.id)
+      
+      @projects = Project.where(:workspace_id => @workspace)
+      
     
     respond_to do |format|
       format.html # index.html.erb
@@ -46,10 +48,11 @@ def index
      @project = Project.new(params[:project])
      @project.user_id = current_user.id
      @workspace = Workspace.find(params[:workspace_id])
+     @project.workspace = @workspace
      
     respond_to do |format|
       if @project.save
-        format.html { redirect_to workspace_project_path(@workspace , @project), notice: 'Project was successfully created.' }
+        format.html { redirect_to workspace_project_tasks_path(@workspace , @project), notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -65,7 +68,7 @@ def index
     @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to workspace_project_tasks_path(@workspace , @project), notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

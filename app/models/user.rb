@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
   # attr_accessible :title, :body
 
+  validates :username, :uniqueness => true
   has_one :profile
   has_many :projects
   has_many :memberships

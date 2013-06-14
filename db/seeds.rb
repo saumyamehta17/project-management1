@@ -14,6 +14,6 @@ Status.create(:name => 'New')
   
   
   10.times  do |n|
-    Progress.create(:name => "#{(n+1)*10}")
+    Progress.create(:name => "#{(n+1)*10}%")
   end 
 

@@ -52,7 +52,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-    @task.attachments.build
+    
   end
 
   # POST /tasks

@@ -38,6 +38,7 @@ class WorkspacesController < ApplicationController
   def edit
     @workspace = Workspace.find(params[:id])
     @status = "edit"
+    session[:return_to] ||= request.referer
     
   end
 
@@ -66,13 +67,16 @@ class WorkspacesController < ApplicationController
 
     respond_to do |format|
       if @workspace.update_attributes(params[:workspace])
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully updated.' }
+        # format.html { redirect_to(:back )}
+        format.html { redirect_to workspace_projects_path(@workspace), notice: 'Workspace was successfully updated.' }
         format.json { head :no_content }
       else
+        
         format.html { render action: "edit" }
         format.json { render json: @workspace.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # DELETE /workspaces/1

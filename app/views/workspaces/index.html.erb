@@ -11,16 +11,16 @@
     <tr>
       
       <th><%= model_class.human_attribute_name(:Workspace) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <!-- <th><%#=t '.actions', :default => t("helpers.actions") %></th> -->
     </tr>
   </thead>
 <tbody>
 
     <% @workspaces.each do |workspace| %>
       <tr>
-        <td><h4><%= link_to workspace.name , workspace_path(workspace) %></h4></td>
+        <td><h4><%= link_to workspace.name , workspace_projects_path(workspace) %></h4></td>
         <td>
-      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+      <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_workspace_path(workspace), :class => 'btn btn-mini' %><% end %>
           <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       workspace_path(workspace),

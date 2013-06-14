@@ -16,14 +16,14 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              workspaces_path, :class => 'btn'  %>
+              workspaces_path, :class => 'btn btn-info'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_workspace_path(@workspace), :class => 'btn' %>
+              edit_workspace_path(@workspace), :class => 'btn btn-info' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               workspace_path(@workspace),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %></br></br>
-  <%= link_to 'invite people' ,  workspace_membership_index_path(@workspace) , :class => 'btn btn-primary'%>
-  <%= link_to 'Projects' ,  workspace_projects_path(@workspace) , :class => 'btn btn-primary'%>
+              :class => 'btn btn-danger' %>
+  <%= link_to 'invite people' ,  workspace_membership_index_path(@workspace) , :class => 'btn btn-info'%>
+  <%= link_to 'Projects' ,  workspace_projects_path(@workspace) , :class => 'btn btn-info'%>
 </div>

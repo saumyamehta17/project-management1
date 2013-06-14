@@ -16,7 +16,6 @@
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                workspace_projects_path(@workspace), :class => 'btn' %>
+    <%= link_to "cancel",:back, :class => 'btn btn-primary' %>
   </div>
 <% end %>
