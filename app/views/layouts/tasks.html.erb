@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
@@ -29,26 +30,36 @@
 
     </div>
   </div>
-   <div class="container">
+
+  <div class="container">
+  <%= flash.each do |name,msg| %>
+    <div class="alert alert-<%= name == :notice ? 'success' : 'error' %>" >
+      <a class="close" data-dismiss="alert">x</a>
+      <%= msg %>
+    </div>
+  <% end %>
+
+   
     <div class="page-header" class="row" >
        <div class="span4">
           Workspace 
          <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
              <i  class="icon icon-edit"></i><% end %>
-             <a href="#" rel="tooltip"  title="description of workspace  <%= @workspace.description %>" style= {text-decoration:none; }><%= @workspace.name %></a>
+             <a href="#" rel="tooltip"  title="description of workspace  <%= @workspace.description %>" style={text-decoration: none;}><%= @workspace.name %></a>
          </h3>
        </div>
     
       
        Project
          <h3><%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
-           <i class="icon icon-edit"></i><% end %>
+           <i  class="icon icon-edit"></i><% end %>
            <a href="#" rel="tooltip" title="description of project  <%= @project.description %>" ><%= @project.name %></a>
          </h3>
       </div>
-  </div>
+  
     
 <%= yield %>
+</div>
 
 </body>
 </html>

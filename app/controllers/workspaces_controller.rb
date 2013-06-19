@@ -41,7 +41,6 @@ class WorkspacesController < ApplicationController
     session[:return_to] ||= request.referer
     
   end
-
   # POST /workspaces
   # POST /workspaces.json
   def create

@@ -8,16 +8,17 @@ class Task < ActiveRecord::Base
   has_many :attachments
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
+  validates :name,:presence => true
   
-  with_options :presence => true do |task|
-    task.validates :name  
-    task.validates :description
- end
+ #  with_options :presence => true do |task|
+ #    task.validates :name
+ #    # task.validates :description
+ # end
 
- with_options :uniqueness => true do |task|
-    task.validates :progress_id
-    task.validates :status_id
- end
+ # with_options :uniqueness => true do |task|
+ #    task.validates :progress_id
+ #    task.validates :status_id
+ # end
 
  
 

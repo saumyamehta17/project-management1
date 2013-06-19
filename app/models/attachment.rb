@@ -11,7 +11,7 @@ class Attachment < ActiveRecord::Base
                                  }
 
   # { :medium => '300X300>' , :thumb => '100X100>'}
-  validates :document, :attachment_presence => true
+  # validates :document, :attachment_presence => true
 
   belongs_to :task
 end

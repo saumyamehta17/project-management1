@@ -4,5 +4,5 @@ class Project < ActiveRecord::Base
   belongs_to :workspace
   attr_accessible :description, :name, :email , :desc
 
-  validates :description  , :length => { :maximum => 50 }
+  validates :name, :presence => true
 end
