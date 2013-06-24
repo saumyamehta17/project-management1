@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     @workspace = Workspace.find(params[:workspace_id])
     @project = Project.find_by_id(params[:project_id])
     @tasks = Task.where(:project_id => @project)
+    @projects = @workspace.projects
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +20,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-
+    @projects = @workspace.projects
 
      if @task.assigned_to.present?
        @assigned_to = @task.assigned_to.username
@@ -37,9 +38,10 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-
+    
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
+    @projects = @workspace.projects
     @task.attachments.build
     respond_to do |format|
       format.html # new.html.erb
@@ -52,7 +54,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-    
+    @projects = @workspace.projects
   end
 
   # POST /tasks

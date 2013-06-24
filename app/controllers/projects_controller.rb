@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
 def index
-     
+      @workspaces = current_user.workspaces
       @workspace = Workspace.find(params[:workspace_id])
       
       @projects = Project.where(:workspace_id => @workspace)
@@ -17,6 +17,7 @@ def index
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @workspaces = current_user.workspaces
     @project = Project.find(params[:id])
     @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
@@ -28,6 +29,7 @@ def index
   # GET /projects/new
   # GET /projects/new.json
   def new
+    @workspaces = current_user.workspaces
     @project = Project.new
     @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|
@@ -38,6 +40,7 @@ def index
 
   # GET /projects/1/edit
   def edit
+    @workspaces = current_user.workspaces
     @project = Project.find(params[:id])
     @workspace = Workspace.find(params[:workspace_id])
   end

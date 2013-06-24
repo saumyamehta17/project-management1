@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lighthouse</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+    <%= render :template => 'layouts/navbar' %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+       <div class="span2 ">
+        <table class="table table-striped">
+
+          <thead><th >Workspaces</th></thead>
+          <% @workspaces.each do |workspace| %>
+          <tr><td><h4><%= link_to workspace.name , workspace_projects_path(workspace) %></h4></td>
+          </tr>
+          <% end %>
+        </table>
+          
+       </div>
+       <div class="span2"></div>
+       <div class="span8">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+    
+  
+          

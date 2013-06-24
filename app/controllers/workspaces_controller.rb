@@ -38,9 +38,8 @@ class WorkspacesController < ApplicationController
   def edit
     @workspace = Workspace.find(params[:id])
     @status = "edit"
-    session[:return_to] ||= request.referer
-    
   end
+  
   # POST /workspaces
   # POST /workspaces.json
   def create

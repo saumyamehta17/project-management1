@@ -9,59 +9,50 @@
 </head>
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
+<%= render :template => 'layouts/navbar' %>
+<div class="container-fluid">
+      <div class="row-fluid">
+       <div class="span2 ">
+        <table class="table table-striped">
 
-      <div class="container">
-        <!-- <a class="brand" href="./index.html">Project tracking</a> -->
-        <%= link_to root_path, class: 'brand'  do %>
-          <div  class="icon icon-home">Project Management</div>
-        <% end %>
-
-        <ul class="nav pull-right">
-          <% if user_signed_in? %>
-            <li><%= link_to "Hi #{current_user.username}" , profile_path %></li>
-            <li><%= link_to "Logout" , destroy_user_session_path , method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign up" , new_user_registration_path %></li>
+          <thead><th class="container">Projects</th></thead>
+          <% @projects.each do |project| %>
+          <tr><td><h3><%= link_to project.name , workspace_project_tasks_path(@workspace,project) %></h3></td>
+          </tr>
           <% end %>
-        </ul>
+        </table>
+          
+       </div>
+       <div class="span2"></div>
+      
+       <div class="span8">
+          <div class="row">
+             <table><th >
+             
+             <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
+                 <i  class="icon icon-edit"></i><% end %>
+                 
+                 <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %></th>
+             </h3>
+             <th>
+             <h3 align="left"><%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
+               <i  class="icon icon-edit"></i><% end %>
+               <%= link_to "#{@project.name}", workspace_projects_path(@workspace),  title: "#{@project.description}", rel: 'tooltip' %>
+             </h3></th>
+             </table>
+          </div><br/>
+      
+          <%= yield %>
       </div>
-
     </div>
   </div>
-
-  <div class="container">
-  <%= flash.each do |name,msg| %>
-    <div class="alert alert-<%= name == :notice ? 'success' : 'error' %>" >
-      <a class="close" data-dismiss="alert">x</a>
-      <%= msg %>
-    </div>
-  <% end %>
-
-   
-    <div class="page-header" class="row" >
-       <div class="span4">
-          Workspace 
-         <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
-             <i  class="icon icon-edit"></i><% end %>
-             <a href="#" rel="tooltip"  title="description of workspace  <%= @workspace.description %>" style={text-decoration: none;}><%= @workspace.name %></a>
-         </h3>
-       </div>
-    
-      
-       Project
-         <h3><%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
-           <i  class="icon icon-edit"></i><% end %>
-           <a href="#" rel="tooltip" title="description of project  <%= @project.description %>" ><%= @project.name %></a>
-         </h3>
-      </div>
-  
-    
-<%= yield %>
-</div>
-
+        
 </body>
 </html>
+       
+  
+    
+  
+           
 
   

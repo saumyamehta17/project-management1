@@ -1,14 +1,13 @@
 <%- model_class = Project -%>
 
-<div class="page-header">
+
    <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
      <div class="icon icon-edit"></div><% end %>
-     <a href="#" rel="tooltip" title="description of workspace  <%= @workspace.description %>" ><%= @workspace.name %></a>
+     <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %>
    </h3>
-</div>
 
 <% if @projects.empty? %>
-       <h3>Plz create Project</h3>
+       <h5>Plz create Project</h5>
      <% else %> 
 <table class="table table-striped">
   <thead>
@@ -46,4 +45,4 @@
 <%= link_to 'Add Project',
              new_workspace_project_path(@workspace),
             :class => 'btn btn-primary' %>
- <%= link_to 'Back' ,:back,:class => 'btn btn-primary' %>
+ <%= link_to 'Back' ,workspaces_path,:class => 'btn btn-primary' %>

@@ -24,7 +24,7 @@ group :assets do
 end
 
 gem 'quiet_assets' , :group => :development 
-gem 'thin'
+gem 'thin' , :group => :development 
 gem 'jquery-rails'
 gem 'paperclip'
 gem 'devise'
@@ -43,4 +43,4 @@ gem 'simple_form'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+gem 'debugger' , :group => :development 
