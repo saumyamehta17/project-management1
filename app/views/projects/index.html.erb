@@ -19,7 +19,7 @@
     <% @projects.each do |project| %>
       <tr>
         
-        <td><strong><h3><%= link_to project.name , workspace_project_tasks_path(@workspace , project) %></h3></strong></td>
+        <td><h4><%= link_to project.name , workspace_project_tasks_path(@workspace , project) %></h4></td>
         
         <td>
           
