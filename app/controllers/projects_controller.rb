@@ -48,6 +48,7 @@ def index
   # POST /projects
   # POST /projects.json
   def create
+     @workspaces = current_user.workspaces
      @project = Project.new(params[:project])
      @project.user_id = current_user.id
      @workspace = Workspace.find(params[:workspace_id])
@@ -67,6 +68,7 @@ def index
   # PUT /projects/1
   # PUT /projects/1.json
   def update
+    @workspaces = current_user.workspaces
     @project = Project.find(params[:id])
     @workspace = Workspace.find(params[:workspace_id])
     respond_to do |format|

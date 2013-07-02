@@ -61,9 +61,10 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-
+   
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
+    @projects = @workspace.projects
     @task.project = @project
     respond_to do |format|
       if @task.save
@@ -84,7 +85,7 @@ class TasksController < ApplicationController
 
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-
+    @projects = @workspace.projects
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html { redirect_to workspace_project_task_path(@workspace,@project,@task), notice: 'Task was successfully updated.' }
