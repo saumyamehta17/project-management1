@@ -3,7 +3,7 @@
   <%= f.input :name %>
   <%= f.input :description , as: :text , :input_html => { :rows => 6 } %>  
     
-  <div class="form-actions">
+  
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <% if !@status.nil? %>
        <%= link_to "cancel", :back , :class => 'btn btn-primary' %>
@@ -12,5 +12,5 @@
                 workspaces_path, :class => 'btn' %>
     <% end %>            
                    
-  </div>
+  
 <% end %>

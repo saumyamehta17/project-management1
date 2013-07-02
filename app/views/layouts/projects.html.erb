@@ -24,6 +24,10 @@
        </div>
        <div class="span2"></div>
        <div class="span8">
+        <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
+         <div class="icon icon-edit"></div><% end %>
+         <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %>
+       </h3>
         <%= yield %>
       </div>
     </div>

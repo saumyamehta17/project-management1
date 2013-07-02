@@ -35,7 +35,7 @@
                  <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %></th>
              </h3>
              <th>
-             <h3 align="left"><%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
+             <h3 class="space"}><%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
                <i  class="icon icon-edit"></i><% end %>
                <%= link_to "#{@project.name}", workspace_projects_path(@workspace),  title: "#{@project.description}", rel: 'tooltip' %>
              </h3></th>
