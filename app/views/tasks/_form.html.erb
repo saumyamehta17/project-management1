@@ -1,20 +1,22 @@
 
 <%= simple_nested_form_for [@workspace, @project , @task] , :html => { :class => 'form-horizontal' , :multipart => true } do |f| %>
 
-   <%= f.input :name %>
+  <%= f.input :name %>
   <%= f.input :description , as: :text , :input_html => { :rows => 4 } %>  
-    
+  <%= f.association :assigned_to ,label_method: :username,:prompt => "choose name" , :include_blank => true%>
+  <%= f.association :status ,label_method: :name,:prompt => "choose status" , :include_blank => true%>
+  <%= f.association :progress ,label_method: :name,:prompt => "choose progress" , :include_blank => true %>
 
-  <div class="control-group">
-    <%= f.label :assigned_to_id, 'Assigned to', :class => 'control-label' %>
+  <!-- <div class="control-group">
+    <%#= f.label :assigned_to_id, 'Assigned to', :class => 'control-label' %>
     <div class="controls">
-      <%= collection_select(:task, :assigned_to_id, User.all, :id, :username, :prompt => true)%>
+      <%#= collection_select(:task, :assigned_to_id, User.all, :id, :username, :prompt => "select name")%>
     </div>
-  </div>
+  </div> -->
 
   <%#= f.input :progress_id , :collection => 0...10 , :include_blank => false  %>
 
-  <div class="control-group">
+  <!-- <div class="control-group">
     <%= f.label :status , :class => 'control-label'  %>
     <div class="controls">
     <%= collection_select(:task , :status_id , Status.all , :id,:name,:prompt => 'select status') %>
@@ -24,7 +26,7 @@
     <%= f.label :progress , :class => 'control-label'  %>
     <div class="controls">
     <%= collection_select(:task , :progress_id , Progress.all , :id,:name,:prompt => 'select progress') %>
-  </div></div>
+  </div></div> -->
 
  
   <div class="control-group" >

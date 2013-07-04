@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 # gem 'sqlite3' , :group => [:development , :test]
 gem 'pg' 
 gem 'mysql2', :group => [:development , :test]
+gem 'localtunnel'
 
 
 # Gems used only for assets and not required

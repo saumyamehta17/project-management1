@@ -6,6 +6,7 @@ class TasksController < ApplicationController
     @project = Project.find_by_id(params[:project_id])
     @tasks = Task.where(:project_id => @project)
     @projects = @workspace.projects
+    @workspaces = current_user.workspaces
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +22,7 @@ class TasksController < ApplicationController
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @projects = @workspace.projects
-
+    @workspaces = current_user.workspaces
      if @task.assigned_to.present?
        @assigned_to = @task.assigned_to.username
     end
@@ -38,7 +39,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-    
+    @workspaces = current_user.workspaces
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @projects = @workspace.projects
@@ -55,13 +56,14 @@ class TasksController < ApplicationController
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @projects = @workspace.projects
+    @workspaces = current_user.workspaces
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-   
+    @workspaces = current_user.workspaces
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @projects = @workspace.projects
@@ -82,7 +84,7 @@ class TasksController < ApplicationController
   def update
 
     @task = Task.find(params[:id])
-
+    @workspaces = current_user.workspaces
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
     @projects = @workspace.projects
@@ -104,7 +106,7 @@ class TasksController < ApplicationController
      @task.destroy
     @project = Project.find_by_id(params[:project_id])
     @workspace = Workspace.find(params[:workspace_id])
-
+    @workspaces = current_user.workspaces
     respond_to do |format|
       format.html { redirect_to workspace_project_tasks_path(@workspace,@project) }
       format.json { head :no_content }

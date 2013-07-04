@@ -49,7 +49,7 @@ class WorkspacesController < ApplicationController
     respond_to do |format|
       if @workspace.save
         @workspace.memberships.create( :user_id => current_user.id  )
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully created.' }
+        format.html { redirect_to workspaces_path, notice: 'Workspace was successfully created.' }
         format.json { render json: @workspace, status: :created, location: @workspace }
       else
         format.html { render action: "new" }
