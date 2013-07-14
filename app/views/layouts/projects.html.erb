@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lighthouse</title>
+  <title>Task Tracker</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
     <%= render :template => 'layouts/navbar' %>
     <div class="container-fluid">
       <div class="row-fluid">
        <div class="span2 ">
         <table class="table table-hover">
 
-          <thead><th >Workspaces</th></thead>
+          <thead><th> <h3>Workspaces</h3></th></thead>
           <% @workspaces.each do |workspace| %>
-          <tr><td><h4><%= link_to workspace.name , workspace_projects_path(workspace) %></h4></td>
+          <tr>
+            <td>
+              <h5><%= link_to workspace.name , workspace_projects_path(workspace) %></h5>
+            </td>
           </tr>
           <% end %>
         </table>
-          
+         <%= link_to 'New Workspace', new_workspace_path, :class => 'btn btn-primary' %>
        </div>
        <div class="span2"></div>
        <div class="span8">
-        <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
-         <div class="icon icon-edit"></div><% end %>
-         <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %>
+        <h3>Projects
+          ( <small>
+              <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %>
+              <%= link_to  edit_workspace_path(@workspace) do %>
+                <div class="icon-pencil"></div>
+              <% end %>
+            </small>)
        </h3>
+       <div>&nbsp;</div>
         <%= yield %>
       </div>
     </div>
@@ -35,6 +43,6 @@
 
 </body>
 </html>
-    
-  
-          
+
+
+

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lighthouse</title>
+  <title>Task Tracker</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
     <%= render :template => 'layouts/navbar' %>
-    <div class="container" >
-      <div class="span3">
-      <%= yield %>
+    <div class="container">
+      <div class="span8">
+        <%= yield %>
       </div>
     </div>
 
 </body>
 </html>
-  
+

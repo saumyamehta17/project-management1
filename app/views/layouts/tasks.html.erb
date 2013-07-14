@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lighthouse</title>
+  <title>Task Tracker</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,59 +13,51 @@
 <div class="container-fluid">
       <div class="row-fluid">
 
-       <div class="span1" >
-        <select class="width-drop" title="Workspaces"  >
-        <div class="icon icon-list" >
-        
-          <option></option>
-          <% @workspaces.each do |workspace| %>
-          <option ><%= link_to workspace.name , workspace_projects_path(workspace) %></option>
-          <% end %></div>
-        </select>
-       </div>
-
-       <div class="span1"></div>
        <div class="span2">
         <table class="table table-hover">
 
-          <thead><th class="container">Projects</th></thead>
+          <thead><th class="container"><h3>Projects</h3></th></thead>
           <% @projects.each do |project| %>
-          <tr><td><h4><%= link_to project.name , workspace_project_tasks_path(@workspace,project) %></h4></td>
+            <tr>
+              <td>
+                <h5><%= link_to project.name , workspace_project_tasks_path(@workspace,project) %></h5>
+              </td>
           </tr>
           <% end %>
         </table>
-          
+
        </div>
-       
+
       <div class="span2"></div>
-       <div class="span4">
+       <div class="span8">
           <div class="row">
-             <table><th >
-             
-             <h3><%= link_to  edit_workspace_path(@workspace) , class: 'brand' do %>
-                 <i  class="icon icon-edit"></i><% end %>
-                 
-                 <%= link_to "#{@workspace.name}", workspaces_path,  title: "#{@workspace.description}", rel: 'tooltip' %></th>
-             </h3>
-             <th>
-             <h3 class="space"}><%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
-               <i  class="icon icon-edit"></i><% end %>
-               <%= link_to "#{@project.name}", workspace_projects_path(@workspace),  title: "#{@project.description}", rel: 'tooltip' %>
-             </h3></th>
-             </table>
-          </div><br/>
-      
+               <h3> Tasks
+                ( <small>
+                  <%= link_to "#{@project.name}", workspace_projects_path(@workspace),  title: "#{@project.description}", rel: 'tooltip' %>
+                  <%= link_to  edit_workspace_project_path(@workspace ,@project) , class: 'brand' do %>
+                    <i class="icon-pencil"></i>
+                  <% end %>
+                </small> )
+                <div class='pull-right'>
+                 <%= form_tag( '', id: 'switch_workspace', class: 'form-inline', method: :get) do %>
+                  <%= label_tag :workspace_id, 'Switch Workspace' %>
+                  <%= select_tag :workspace_id, options_for_select( @workspaces.collect{ |w| [w.name, w.id]}, @workspace.id ) %>
+                 <% end %>
+                </div>
+               </h3>
+          </div>
+
           <%= yield %>
       </div>
     </div>
   </div>
-        
+
 </body>
 </html>
-       
-  
-    
-  
-           
 
-  
+
+
+
+
+
+

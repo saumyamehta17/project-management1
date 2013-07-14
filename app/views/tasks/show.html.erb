@@ -1,21 +1,42 @@
 <%- model_class = Task -%>
 
-<dl class="dl-horizontal">
+<dl class="dl-horizontal task_list">
   <div>
-  <dt><strong>Task: </strong></dt>
-  <strong><dd><%= @task.name %></dd></strong></div>
-  <dt><strong>Description: </strong></dt>
-  <strong><dd><%= @task.description %></dd></strong>
-  <dt><strong>Assigned to:</strong></dt>
-  <dd><%= @assigned_to %></dd>
-  <dt><strong>Status:</strong></dt>
-  <dd><%= @task.status.name unless @task.status.blank? %></dd>
-  <dt><strong>Progress:</strong></dt>
-  <dd><%= @task.progress.name unless @task.status.blank?%></dd>
-  <dt><strong>Attachments:</strong></dt>
-  <% for doc in @task.attachments %>
-    <%= image_tag doc.document.url(:thumb) %>
-   <% end %>
+    <dt><strong>Task: </strong></dt>
+    <strong><dd><%= @task.name %></dd></strong>
+  </div>
+
+  <div>
+    <dt><strong>Description: </strong></dt>
+    <dd><%= @task.description.blank? ? 'No Description' : @task.description %></dd>
+  </div>
+
+  <div>
+    <dt><strong>Assigned to:</strong></dt>
+    <dd><%= @assigned_to %></dd>
+  </div>
+
+  <div>
+    <dt><strong>Status:</strong></dt>
+    <dd><%= @task.status.blank? ? '-' : @task.status.name %></dd>
+  </div>
+
+  <div>
+    <dt><strong>Progress:</strong></dt>
+    <dd><%= @task.progress.blank? ? '-' : @task.progress.name %></dd>
+  </div>
+
+  <div>
+    <dt><strong>Attachments:</strong></dt>
+    <% for doc in @task.attachments %>
+      <% if doc.class::IMAGE_TYPES.include?(doc.document_content_type) %>
+        <%= image_tag doc.document.url(:thumb) %>
+      <% else %>
+        <%= link_to doc.document_file_name, doc.document.url(:original, false) %>
+      <% end %>
+      ,
+    <% end %>
+  </div>
 
 
 </dl>
@@ -27,5 +48,5 @@
   <%= link_to "Edit",edit_workspace_project_task_path(@workspace ,@project,@task), :class => 'btn btn-primary' %>
 
   <%= link_to "Delete",workspace_project_task_path(@workspace,@project,@task),:method => 'delete',:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-danger' %>
-  
+
 </div>

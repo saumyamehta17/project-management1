@@ -1,4 +1,3 @@
-<div class="page-header"></div>
 <div class="container">
   <% flash.each do |name,msg| %>
     <div class="alert alert-<%= name == :notice ? 'success' : 'error' %>" >
@@ -14,7 +13,7 @@
         <!-- <a class="brand" href="./index.html">Project tracking</a> -->
         <%= link_to root_path, class: 'brand'  do %>
           <div  class="icon icon-home">Project Management</div>
-        <% end %> 
+        <% end %>
 
         <ul class="nav pull-right">
           <% if user_signed_in? %>
@@ -28,3 +27,4 @@
 
     </div>
   </div>
+</div>

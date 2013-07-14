@@ -1,3 +1,8 @@
+a:hover {text-decoration:none;}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:active {text-decoration:underline;}
+
 .login-box {
   border: 1px solid;
   margin-top: 5%;
@@ -27,3 +32,7 @@
 
 .space {  margin-left: 60px; }
 .width-drop { width: 20px; }
+
+.task_list div {
+  margin-bottom: 10px;
+}

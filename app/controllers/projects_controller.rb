@@ -1,13 +1,14 @@
 class ProjectsController < ApplicationController
+
+  before_filter :fetch_workspace, only: [:index]
+
   # GET /projects
   # GET /projects.json
-def index
+  def index
       @workspaces = current_user.workspaces
-      @workspace = Workspace.find(params[:workspace_id])
-      
       @projects = Project.where(:workspace_id => @workspace)
-      
-    
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -53,7 +54,7 @@ def index
      @project.user_id = current_user.id
      @workspace = Workspace.find(params[:workspace_id])
      @project.workspace = @workspace
-     
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to workspace_project_path(@workspace , @project), notice: 'Project was successfully created.' }
@@ -86,7 +87,7 @@ def index
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
-    
+
     @workspace = Workspace.find(params[:workspace_id])
     @project.destroy
 
@@ -95,4 +96,13 @@ def index
       format.json { head :no_content }
     end
   end
+
+
+  #  =====================
+  #  = Protected methods =
+  #  =====================
+    def fetch_workspace
+      # @workspace = current_path?(root_path) ? current_user.workspaces.first : Workspace.find(params[:workspace_id])
+      @workspace = request.url == root_url ? current_user.workspaces.first : current_user.workspaces.find(params[:workspace_id])
+    end
 end
