@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614070305) do
+ActiveRecord::Schema.define(:version => 20130721082123) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",            :null => false
@@ -99,6 +99,9 @@ ActiveRecord::Schema.define(:version => 20130614070305) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "username"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
