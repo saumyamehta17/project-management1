@@ -1,6 +1,7 @@
 class WorkspacesController < ApplicationController
   # GET /workspaces
   # GET /workspaces.json
+  
   def index
     
     @workspaces = Workspace.where(:id => current_user.workspaces)

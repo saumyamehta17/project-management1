@@ -11,6 +11,7 @@ gem 'mysql2', :group => [:development , :test]
 gem 'localtunnel'
 
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,13 +27,15 @@ end
 
 gem 'quiet_assets' , :group => :development 
 gem 'thin' , :group => :development 
-gem 'jquery-rails'
+gem 'jquery-rails' , "2.3.0"
 gem 'paperclip'
 gem 'devise'
 gem 'nested_form'
 gem 'simple_form'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'activeadmin'
+gem 'meta_search',    '>= 1.1.0.pre'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

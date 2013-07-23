@@ -2,13 +2,22 @@ Lighthouse::Application.routes.draw do
 
 
 
+  
 
+  
+
+  
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+ 
+  
+  
 
   resources :workspaces do
     get "membership/index"
 
     resources :projects do
-    resources :tasks
+      resources :tasks
     end
   end
 
@@ -19,7 +28,7 @@ Lighthouse::Application.routes.draw do
 
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
 
 
   # The priority is based upon order of creation:
@@ -73,6 +82,11 @@ Lighthouse::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'projects#index'
     root :to => 'projects#index'
+    
+    devise_for :admin_users, ActiveAdmin::Devise.config
+    ActiveAdmin.routes(self)
+    
+    
 
 
   # See how all your routes lay out with "rake routes"
