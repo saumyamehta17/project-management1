@@ -5,4 +5,10 @@ class Project < ActiveRecord::Base
   attr_accessible :description, :name, :email , :desc
 
   validates :name, :presence => true
+  before_save :capitalize_name
+
+  def capitalize_name
+	  self.name = self.name.capitalize
+  end
+  
 end

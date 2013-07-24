@@ -23,5 +23,20 @@
   <% end %>
 
   <%= link_to "Add Task",new_workspace_project_task_path(@workspace , @project),:class => 'btn btn-primary' %>
-  <%= link_to "Back", :back, :class => 'btn btn-primary ' %>
+  <%= link_to "Back", :back, :class => "btn btn-primary" %><br/><br/>
+
+  <%= form_tag workspace_project_tasks_path , :method => 'get' do %>
+     <p>
+        <i class="icon icon-user"></i>
+        <%= text_field_tag :search , params[:search] , :class => 'input-medium search-query' %>
+        <%= submit_tag "search" , :name => nil , :class => "btn btn-primary" %>
+        <!-- <input type="text" class="input-medium search-query">
+        <button type="submit" class="btn btn-primary">Invite</button> -->
+     </p>
+  <% end %>
+
+
 </div>
+
+
+        

@@ -31,7 +31,7 @@ a:active {text-decoration:underline;}
   margin-left: -25%;
   margin-top: 20%;
   }
-  .logo1{
+.logo1{
     margin-left: 40%;
     margin-top: 5%;
   }
@@ -43,6 +43,6 @@ a:active {text-decoration:underline;}
 .space {  margin-left: 60px; }
 .width-drop { width: 20px; }
 
-.task_list div {
+.task_list {
   margin-bottom: 10px;
 }

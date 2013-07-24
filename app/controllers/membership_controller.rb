@@ -5,7 +5,7 @@ class MembershipController < ApplicationController
   @workspace = Workspace.find(params[:workspace_id]) 
  
   # if params[:invite_btn]
-    debugger
+    
       
       # @email = params[:Enter]
       

@@ -2,6 +2,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
+  
+    unless params[:search].blank?
+      @email = params[:search]
+      UserMailer.registration_confirmation(@email).deliver
+    end
+    
     @workspace = Workspace.find(params[:workspace_id])
     @project = Project.find_by_id(params[:project_id])
     @tasks = Task.where(:project_id => @project)
@@ -112,4 +118,9 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def email_purpuse
+
+  end
+
 end

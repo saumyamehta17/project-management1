@@ -38,8 +38,9 @@
                     <i class="icon-pencil"></i>
                   <% end %>
                 </small> )
+                <!-- class: 'form-inline', for switch_workspace --> 
                 <div class='pull-right'>
-                 <%= form_tag( '', id: 'switch_workspace', class: 'form-inline', method: :get) do %>
+                 <%= form_tag( '', id: 'switch_workspace',  method: :get) do %>
                   <%= label_tag :workspace_id, 'Switch Workspace' %>
                   <%= select_tag :workspace_id, options_for_select( @workspaces.collect{ |w| [w.name, w.id]}, @workspace.id ) %>
                  <% end %>
@@ -47,7 +48,9 @@
                </h3>
           </div>
 
-          <%= yield %>
+          <div class="footer-links" style="margin-left:-20%;">
+            <%= yield %>
+          </div>
       </div>
     </div>
   </div>
