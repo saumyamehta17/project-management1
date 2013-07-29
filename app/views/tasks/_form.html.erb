@@ -6,6 +6,7 @@
   <%= f.association :assigned_to ,label_method: :username,:prompt => "choose name" , :include_blank => true%>
   <%= f.association :status ,label_method: :name,:prompt => "choose status" , :include_blank => true%>
   <%= f.association :progress ,label_method: :name,:prompt => "choose progress" , :include_blank => true %>
+  <%= f.input :due_date , as: :string %>
 
   <!-- <div class="control-group">
     <%#= f.label :assigned_to_id, 'Assigned to', :class => 'control-label' %>

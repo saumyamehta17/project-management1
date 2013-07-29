@@ -12,6 +12,11 @@
   </div>
 
   <div>
+    <dt><strong>Due Date: </strong></dt>
+    <dd><%= @task.due_date.blank? ? '-' : @task.due_date %></dd>
+  </div>
+
+  <div>
     <dt><strong>Assigned to:</strong></dt>
     <dd><%= @assigned_to %></dd>
   </div>

@@ -6,12 +6,13 @@
         <% @tasks.each do |task| %>
           <tr>
             <td>
-              <h5><%= link_to task.name , workspace_project_task_path(@workspace,@project,task) %>
+              <h5><%= link_to task.name , workspace_project_task_path(@workspace,@project,task), title: "#{task.due_date.blank? ? 'due date not set' : task.due_date}", rel: 'tooltip' %>
                   <%= link_to  edit_workspace_project_task_path(@workspace,@project ,task), class: 'brand' do %>
                     <i class="icon-pencil"></i>
                   <% end %>
               </h5>
             </td>
+            
             <td>
               <%= task.description.present? ? task.description : 'No Description' %>
             </td>
@@ -29,7 +30,7 @@
      <p>
         <i class="icon icon-user"></i>
         <%= text_field_tag :search , params[:search] , :class => 'input-medium search-query' %>
-        <%= submit_tag "search" , :name => nil , :class => "btn btn-primary" %>
+        <%= submit_tag "Invite" , :name => nil , :class => "btn btn-primary" %>
         <!-- <input type="text" class="input-medium search-query">
         <button type="submit" class="btn btn-primary">Invite</button> -->
      </p>
