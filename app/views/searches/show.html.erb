@@ -1,0 +1,23 @@
+<%- model_class = Search -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<% if @search.results.present? %>
+	<dl class="dl-horizontal" style="margin-left:-50%;">
+	  <dt></dt>
+	  <dd ><strong><%= @search.option_value %>s:</strong></dd>
+		  <% @search.results.each do |r| %>
+		    <dd><%= link_to  r.name , @project %></dd>
+		  <% end %>
+	</dl>
+ 
+ <% else %>
+	<strong>No result found</strong>
+<% end %>
+
+<div class="form-actions">
+  <%= link_to  "Back" , :back , :class => 'btn btn-primary'%>
+</div>
+	  
+

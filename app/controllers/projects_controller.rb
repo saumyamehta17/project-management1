@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
+      
       @workspaces = current_user.workspaces
       @projects = Project.where(:workspace_id => @workspace)
 

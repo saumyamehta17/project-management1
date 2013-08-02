@@ -10,12 +10,14 @@ devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"
         collection do
           get 'email_purpuse'
         end
+        
       end
     end
   end
 
 
   resource :profile
+  resources :searches
 
   
     root :to => 'projects#index'
