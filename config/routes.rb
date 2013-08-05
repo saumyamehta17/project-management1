@@ -1,5 +1,8 @@
 Lighthouse::Application.routes.draw do
 
+  resources :reminders
+
+
 devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
  
   resources :workspaces do

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  due_date: 2013-08-05
+  status: 1
+  user: 
+
+two:
+  name: MyString
+  due_date: 2013-08-05
+  status: 1
+  user: 

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :memberships
   has_many :workspaces , :through => :memberships
+  has_many :reminders
 
   after_create :profile_intialize
   after_create :workspace_intialize
