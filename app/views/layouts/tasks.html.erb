@@ -44,7 +44,12 @@
                   <%= label_tag :workspace_id, 'Switch Workspace' %>
                   <%= select_tag :workspace_id, options_for_select( @workspaces.collect{ |w| [w.name, w.id]}, @workspace.id ) %>
                  <% end %>
+
+                 
+
                 </div>
+
+
                </h3>
           </div>
 

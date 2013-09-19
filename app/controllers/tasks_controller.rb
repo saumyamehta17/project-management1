@@ -119,8 +119,18 @@ class TasksController < ApplicationController
     end
   end
 
-  def email_purpuse
+  # ===========================================================================
+  # custom action for task dropdown & list on home page after project selection
+  # ============================================================================
 
+  def task_list
+    @project =  params[:project_id]
+    @workspace = Project.find_by_id(@project).workspace[:id]
+    @tasks = Task.where(:project_id => params[:project_id])
+    #debugger
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

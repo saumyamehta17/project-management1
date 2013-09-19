@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span10 "> </div>
+           <div class="span2" style="margin-top:-15%;">
+              <% unless @projects.blank? %>
+                <%= form_tag(tasks_task_list_path,  method: :get, :remote => true ) do %>
+                  <%= label_tag :projects %>
+                  <%= select_tag 'project_id', options_for_select(@projects.collect{|p| [p.name, p.id]}) , :prompt => 'select project' %>
+                  <%= submit_tag 'Get task' %>
+                <% end %>
+
+             <% end %>
+
+           </div>
+       </div>
+    </div>
+</div>

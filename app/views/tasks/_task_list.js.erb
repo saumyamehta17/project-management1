@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span10 "> </div>
+        <div class="span2" style="margin-top:-5%;">
+        <% unless @tasks.blank? %>
+          <%= form_tag('', id: 'task' , method: :get, :remote => true ) do %>
+            <%= label_tag :tasks %>
+            <%= select_tag 'task_id', options_for_select(@tasks.collect{|p| [p.name, p.id]}) , :prompt => 'select task' %>
+            <%= submit_tag 'Show Task' %>
+          <% end %>
+        <% end %>
+
+        <p>
+           <% @tasks.each do |task| %>
+                <%= link_to task.name,  workspace_project_task_path(@workspace,@project,task) %>   <br/>
+           <% end %>
+        </p>
+
+        </div>
+    </div>
+</div>
+</div>

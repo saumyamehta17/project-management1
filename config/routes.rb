@@ -9,6 +9,7 @@ devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"
     get "membership/index"
 
     resources :projects do
+
       resources :tasks do
         collection do
           get 'email_purpuse'
@@ -18,6 +19,9 @@ devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"
     end
   end
 
+
+  get 'projects/project_dropdown'
+  get 'tasks/task_list'
 
   resource :profile
   resources :searches

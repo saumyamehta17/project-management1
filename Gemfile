@@ -28,7 +28,7 @@ end
 
 gem 'quiet_assets' , :group => :development 
 gem 'thin' , :group => :development 
-gem 'jquery-rails' , "2.3.0"
+gem 'jquery-rails' , "2.3.0"  #gem dependcy for this version for active admin
 gem 'paperclip'
 gem 'devise'
 gem 'nested_form'

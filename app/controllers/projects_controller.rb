@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   def index
       
       @workspaces = current_user.workspaces
+      # debugger
       @projects = Project.where(:workspace_id => @workspace)
 
 
@@ -96,6 +97,21 @@ class ProjectsController < ApplicationController
     format.html { redirect_to workspace_projects_path(@workspace)}
       format.json { head :no_content }
     end
+  end
+
+
+  # ======================
+  # custom action for project dropdown values
+  # ======================
+
+  def project_dropdown
+    @workspace =   params[:workspace_id]
+    @projects = Project.where(:workspace_id => params[:workspace_id])
+
+     respond_to do |format|
+      format.js
+    end
+
   end
 
 
