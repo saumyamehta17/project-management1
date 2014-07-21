@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 # gem 'sqlite3' , :group => [:development , :test]
 gem 'pg' 
 gem 'mysql2', :group => [:development , :test]
-gem 'localtunnel'
+#gem 'localtunnel'
 
 
 
@@ -37,6 +37,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
+gem 'capistrano'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
