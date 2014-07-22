@@ -1,9 +1,10 @@
 # config valid only for Capistrano 3.1
+require 'capistrano/ext/multistage'
 lock '3.2.1'
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
 set :application, 'project_management'
-server "107.170.153.145", :app, :web, :db, :primary => true
+server "107.170.153.145",  roles: [:app, :web, :db], :primary => true
 set :scm, :git
 set :repo_url, 'https://github.com/sweetymehta/project-management1.git'
 set :user, "sweety"
