@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="65aa25ee-52a1-4eb5-9ebf-39105d0413ff" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/deploy.rb" afterPath="$PROJECT_DIR$/config/deploy.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/deploy/production.rb" afterPath="$PROJECT_DIR$/config/deploy/production.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/project-management1.iml" afterPath="$PROJECT_DIR$/.idea/project-management1.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/project.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/deploy/staging.rb" afterPath="$PROJECT_DIR$/config/deploy/staging.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="project-management1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,7 +55,7 @@
       <file leaf-file-name="deploy.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/deploy.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="37" selection-start="194" selection-end="194" vertical-scroll-proportion="-0.5339806" vertical-offset="405" max-vertical-offset="1035">
+            <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.024271844" vertical-offset="0" max-vertical-offset="1050">
               <folding />
             </state>
           </provider>
@@ -96,7 +91,7 @@
       <file leaf-file-name="script_capistrano.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../script_capistrano.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="12" selection-start="2000" selection-end="2000" vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="705">
+            <state line="3" column="69" selection-start="164" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
               <folding />
             </state>
           </provider>
@@ -154,10 +149,10 @@
         <option value="$PROJECT_DIR$/config/database.sample.yml" />
         <option value="$PROJECT_DIR$/../script_capistrano.rb" />
         <option value="$PROJECT_DIR$/Capfile" />
-        <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
         <option value="$PROJECT_DIR$/config/deploy/staging.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/project.js" />
+        <option value="$PROJECT_DIR$/config/deploy.rb" />
       </list>
     </option>
   </component>
@@ -737,14 +732,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../script_capistrano.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="12" selection-start="2000" selection-end="2000" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+        <state line="3" column="69" selection-start="164" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="37" selection-start="194" selection-end="194" vertical-scroll-proportion="-0.5339806" vertical-offset="405" max-vertical-offset="1035">
+        <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.024271844" vertical-offset="0" max-vertical-offset="1050">
           <folding />
         </state>
       </provider>

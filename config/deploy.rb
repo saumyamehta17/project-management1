@@ -1,7 +1,8 @@
 # config valid only for Capistrano 3.1
-require 'capistrano/ext/multistage'
 lock '3.2.1'
 set :stages, ["staging", "production"]
+require "bundler/capistrano"            # install all the new missing plugins...
+require 'capistrano/ext/multistage'     # deploy on all the servers..
 set :default_stage, "staging"
 set :application, 'project_management'
 server "107.170.153.145",  roles: [:app, :web, :db], :primary => true
