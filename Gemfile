@@ -37,7 +37,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
-gem 'capistrano'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -48,7 +47,9 @@ gem 'capistrano'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
-
+#gem 'capistrano'
+gem 'capistrano',  '~> 3.0.0', require: false, group: :development
+gem 'capistrano-rails'
+gem 'capistrano-bundler' # for capistrano/bundler
 # To use debugger
 gem 'debugger' , :group => :development 
