@@ -48,8 +48,11 @@ gem 'meta_search',    '>= 1.1.0.pre'
 
 # Deploy with Capistrano
 #gem 'capistrano'
-gem 'capistrano',  '~> 3.0.0'
+gem 'capistrano', '2.15.5'
+gem 'rvm-capistrano'
+#gem 'capistrano',  '~> 3.0.0'
 gem 'capistrano-rails'
-gem 'capistrano-rvm', github: 'capistrano/rvm'
+#gem 'capistrano-rvm', github: 'capistrano/rvm'
+#gem 'net-ssh'
 # To use debugger
 gem 'debugger' , :group => :development 
